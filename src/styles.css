@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+nav.navbar {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.navbar .navbar-nav .nav-item {
+    padding: 12px 10px;
+}
+
+.navbar .navbar-nav .nav-item.active a,
+.navbar .navbar-nav .nav-item a,
+.navbar .navbar-nav .nav-item a:hover {
+    color: #fff;
+}
+
+.navbar .navbar-nav .nav-item.active {
+    color: #fff;
+    border-bottom: 5px solid #fff;
+}
