@@ -14,6 +14,7 @@ export class NewsCategoryComponent implements OnInit {
     articles: IHeadlineArticle[] = [];
     isLoading: boolean = false;
     isEmpty: boolean = false;
+    noMoreResults: boolean = false;
     topHeadlineParams = {
         q: undefined,
         category: undefined,
@@ -63,6 +64,7 @@ export class NewsCategoryComponent implements OnInit {
             this.isLoading = false;
             if (status == Constants.SUCCESS) {
                 this.articles = [...this.articles, ...articles];
+                this.noMoreResults = articles.length > 0 ? false : true;
                 this.isEmpty = totalResults == 0;
             }
         }, error => this.isLoading = false);
