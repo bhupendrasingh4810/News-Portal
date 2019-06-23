@@ -14,14 +14,13 @@
             </li>
         </ul>
         <form class="w-50 px-3" (ngSubmit)="search()">
-            <input class="form-control mr-sm-2" type="search" name="search" [(ngModel)]="searchValue" placeholder="Search"
-                aria-label="Search">
+            <input class="form-control mr-sm-2" type="search" name="search" [(ngModel)]="searchValue"
+                placeholder="Search" aria-label="Search">
             <button type="submit" class="d-none"></button>
         </form>
-        <select class="form-control w-25" name="" id="">
-            <option value="">PublishedAt</option>
-            <option value="">Popularity</option>
-            <option value="">Relevancy</option>
+        <select class="form-control w-25" (change)="selectCountry($event)">
+            <option value="">Select Country</option>
+            <option value="{{country?.code}}" *ngFor="let country of countries">{{country?.name}}</option>
         </select>
     </div>
 </nav>

@@ -25,6 +25,10 @@ nav.navbar {
     color: #111;
 }
 
+.category a img {
+    max-height: 300px;
+}
+
 .home .most-popular a:hover,
 .category a:hover {
     color: dimgray;
@@ -32,6 +36,18 @@ nav.navbar {
 
 .home .most-popular .heading {
     border-left: 5px solid teal;
+}
+
+.home .most-popular .article {
+    min-height: 360px;
+}
+
+.home .most-popular .article .card {
+    min-height: 360px;
+}
+
+.home .most-popular .article .card img {
+    max-height: 230px;
 }
 
 .overlay {

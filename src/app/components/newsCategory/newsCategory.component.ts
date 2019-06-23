@@ -11,42 +11,58 @@ import { Constants } from 'src/app/api/constants';
 })
 
 export class NewsCategoryComponent implements OnInit {
-    articles: IHeadlineArticle[];
+    articles: IHeadlineArticle[] = [];
     isLoading: boolean = false;
-    category: string;
     isEmpty: boolean = false;
+    topHeadlineParams = {
+        q: undefined,
+        category: undefined,
+        country: undefined,
+        sources: undefined,
+        language: 'en',
+        page: 0,
+        pageSize: null
+    };
     constructor(private dataService: DataService,
         private activatedRoute: ActivatedRoute,
         private userService: UserService) { }
 
     ngOnInit() {
         this.activatedRoute.params.subscribe(({ id }) => {
-            this.category = id;
+            this.topHeadlineParams.category = id;
             this.dataService.setActiveRoute(id);
-            this.getNewsByCategory(undefined, id);
+            this.articles = [];
+            this.getNewsByCategory();
         });
         this.dataService.getSearchValue
             .subscribe(response => {
-                if (response != undefined) this.getNewsByCategory(response, this.category)
+                if (response != undefined) {
+                    this.topHeadlineParams.q = response;
+                    this.topHeadlineParams.page = 0;
+                    this.articles = [];
+                    this.getNewsByCategory();
+                }
+            });
+        this.dataService.getCountryCode
+            .subscribe(response => {
+                if (response != undefined) {
+                    this.topHeadlineParams.country = response;
+                    this.topHeadlineParams.page = 0;
+                    this.articles = [];
+                    this.getNewsByCategory();
+                }
             });
     }
 
     // Function to get headlines/articles by category
 
-    getNewsByCategory(q, category) {
+    getNewsByCategory() {
+        this.topHeadlineParams.page++;
         this.isLoading = true;
-        this.userService.getTopHeadlines({
-            q,
-            category,
-            country: 'in',
-            sources: undefined,
-            language: undefined,
-            page: null,
-            pageSize: null
-        }).subscribe(({ status, articles, totalResults }: IHeadlines) => {
+        this.userService.getTopHeadlines(this.topHeadlineParams).subscribe(({ status, articles, totalResults }: IHeadlines) => {
             this.isLoading = false;
             if (status == Constants.SUCCESS) {
-                this.articles = articles;
+                this.articles = [...this.articles, ...articles];
                 this.isEmpty = totalResults == 0;
             }
         }, error => this.isLoading = false);

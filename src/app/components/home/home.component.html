@@ -2,20 +2,20 @@
 <div class="container-fluid my-4">
     <div class="col-md-12 home">
         <div class="row">
-            <div class="col-md-2 most-popular">
+            <div class="col-md-10 most-popular">
                 <div class="card heading mb-2 p-3">
                     <b cass="h4">Most Popular</b>
                 </div>
                 <a *ngFor="let article of mostPopularNews" href="{{article?.url}}" target="_blank">
-                    <div class="card my-1">
-                        <img class="img-thumbnail" src="{{article?.urlToImage}}" alt="">
-                        <p class="h5 p-2">{{article?.title}}</p>
+                    <div class="col-md-3 float-left article">
+                        <div class="card my-1">
+                            <img class="img-thumbnail" src="{{article?.urlToImage}}" onerror="src='assets/images/default.jpg'" alt="{{article?.title}}">
+                            <p class="h5 p-2">{{article?.title}}</p>
+                        </div>
                     </div>
                 </a>
-            </div>
-            <div class="col-md-8">
-                <div class="card">
-                    dfvfdvfd
+                <div class="alert alert-warning text-center" *ngIf="!isLoading && mostPopularNews.length == 0">No
+                    articles found
                 </div>
             </div>
             <div class="col-md-2 most-popular">
@@ -27,6 +27,8 @@
                         <p class="h5">{{source?.name}}</p>
                     </div>
                 </a>
+                <div class="alert alert-warning text-center" *ngIf="!isLoading && sources.length == 0">No source found
+                </div>
             </div>
         </div>
     </div>
