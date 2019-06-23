@@ -1,10 +1,10 @@
-export interface ISource {
+export interface IHeadlineSource {
     id: string,
     name: string
 }
 
-export interface IArticle {
-    source: ISource,
+export interface IHeadlineArticle {
+    source: IHeadlineSource,
     author: string,
     title: string,
     description: string,
@@ -14,8 +14,8 @@ export interface IArticle {
     content: string
 }
 
-export interface INews {
+export interface IHeadlines {
     status: string,
     totalResults: number,
-    articles: IArticle[]
+    articles: IHeadlineArticle[]
 }

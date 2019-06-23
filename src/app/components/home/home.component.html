@@ -1,3 +1,4 @@
+<div class="app-loader" *ngIf="isLoading"></div>
 <div class="container-fluid my-4">
     <div class="col-md-12 home">
         <div class="row">
@@ -5,20 +6,27 @@
                 <div class="card heading mb-2 p-3">
                     <b cass="h4">Most Popular</b>
                 </div>
-                <div class="card" *ngFor="let article of mostPopularNews">
-                    <img class="img-thumbnail" src="{{article?.urlToImage}}" alt="">
-                    <p class="h5">{{article?.title}}</p>
-                </div>
+                <a *ngFor="let article of mostPopularNews" href="{{article?.url}}" target="_blank">
+                    <div class="card my-1">
+                        <img class="img-thumbnail" src="{{article?.urlToImage}}" alt="">
+                        <p class="h5 p-2">{{article?.title}}</p>
+                    </div>
+                </a>
             </div>
             <div class="col-md-8">
                 <div class="card">
                     dfvfdvfd
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="card">
-                    dfvfdvfd
+            <div class="col-md-2 most-popular">
+                <div class="card heading mb-2 p-3">
+                    <b cass="h4">Sources</b>
                 </div>
+                <a *ngFor="let source of sources" href="{{source?.url}}" target="_blank">
+                    <div class="card my-1 p-2">
+                        <p class="h5">{{source?.name}}</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

@@ -1,0 +1,24 @@
+<div class="app-loader" *ngIf="isLoading"></div>
+<div class="container">
+    <div class="category col-md-12 my-3">
+        <div class="row">
+            <a *ngFor="let article of articles" href="{{article?.url}}" target="_blank">
+                <div class="card my-1">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4 p-2">
+                                <img src="{{article?.urlToImage}}" alt="" class="img-thumbnail">
+                            </div>
+                            <div class="col-md-8 p-2">
+                                <p class="h3">{{article?.title}}</p>
+                                <p>{{article?.content}}</p>
+                                <span><b>Published At:</b> {{article?.publishedAt | date:'mediumDate'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="alert alert-warning text-center" *ngIf="!isLoading && isEmpty">No articles found</div>
+    </div>
+</div>

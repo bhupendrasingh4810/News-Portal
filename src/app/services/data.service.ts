@@ -11,7 +11,14 @@ export class DataService {
     private activeRoute = new BehaviorSubject(undefined);
     getActiveRoute = this.activeRoute.asObservable();
 
+    private search = new BehaviorSubject(undefined);
+    getSearchValue = this.search.asObservable();
+
     setActiveRoute(args: string) {
         this.activeRoute.next(args);
+    }
+
+    setSearchValue(args: string) {
+        this.search.next(args);
     }
 }

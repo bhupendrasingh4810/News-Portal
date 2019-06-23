@@ -19,6 +19,90 @@ nav.navbar {
     border-bottom: 5px solid #fff;
 }
 
+.home .most-popular a,
+.category a {
+    text-decoration: none !important;
+    color: #111;
+}
+
+.home .most-popular a:hover,
+.category a:hover {
+    color: dimgray;
+}
+
 .home .most-popular .heading {
     border-left: 5px solid teal;
+}
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+} 
+
+.button-loader:before,
+.app-loader:before {
+    width: 15px;
+    height: 15px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: -8px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    border-top: 2px solid #fff;
+    border-right: 2px solid transparent;
+    border-radius: 50%;
+    animation: m-loader-rotate 0.6s linear infinite;
+}
+
+.app-loader:before {
+    border-color: #f47a20;
+    width: 25px;
+    height: 25px;
+    z-index: -1;
+}
+
+.app-loader {
+    height: 180px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+}
+
+@-webkit-keyframes m-loader-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes m-loader-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes m-loader-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes m-loader-rotate {
+    to {
+        transform: rotate(360deg);
+    }
 }

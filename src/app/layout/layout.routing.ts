@@ -13,10 +13,6 @@ export const layoutRoute: Routes = [
             {
                 path: 'category/:id',
                 loadChildren: () => import('../components/newsCategory/newsCategory.module').then(m => m.NewsCategoryModule)
-            },
-            {
-                path: '/:id',
-                loadChildren: () => import('../components/newsDetail/newsDetail.module').then(m => m.NewsDetailModule)
             }
         ]
     }
