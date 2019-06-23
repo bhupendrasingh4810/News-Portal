@@ -18,3 +18,7 @@ nav.navbar {
     color: #fff;
     border-bottom: 5px solid #fff;
 }
+
+.home .most-popular .heading {
+    border-left: 5px solid teal;
+}

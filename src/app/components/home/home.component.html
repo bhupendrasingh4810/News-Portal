@@ -1,1 +1,25 @@
-<h1>Home</h1>
+<div class="container-fluid my-4">
+    <div class="col-md-12 home">
+        <div class="row">
+            <div class="col-md-2 most-popular">
+                <div class="card heading mb-2 p-3">
+                    <b cass="h4">Most Popular</b>
+                </div>
+                <div class="card" *ngFor="let article of mostPopularNews">
+                    <img class="img-thumbnail" src="{{article?.urlToImage}}" alt="">
+                    <p class="h5">{{article?.title}}</p>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    dfvfdvfd
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    dfvfdvfd
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routing';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { SessionInterceptor } from './services/sessionInterceptor';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,17 @@ import { routes } from './app.routing';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SessionInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
