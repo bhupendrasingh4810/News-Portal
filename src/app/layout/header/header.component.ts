@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
 import { Constants } from 'src/app/api/constants';
 import { ICountry } from 'src/app/models/country.model';
+import { SetSearchValue, SetCountryCode } from 'src/app/store/actions/header.actions';
+import { Store, select } from '@ngrx/store';
+import { getActiveRoute } from 'src/app/store/selectors/header.selectors';
 
 @Component({
     selector: 'app-header',
@@ -13,17 +15,17 @@ export class HeaderComponent implements OnInit {
     countries: ICountry[] = Constants.COUNTRY;
     active: string;
     searchValue: string;
-    constructor(private dataService: DataService) { }
+    constructor(private store: Store) { }
 
     ngOnInit() {
-        this.dataService.getActiveRoute.subscribe(data => this.active = data);
+        this.store.pipe(select(getActiveRoute)).subscribe(route => this.active = route);
     }
 
     search() {
-        this.dataService.setSearchValue(this.searchValue);
+        this.store.dispatch(new SetSearchValue(this.searchValue));
     }
 
     selectCountry(event: any) {
-        this.dataService.setCountryCode(event.target.value);
+        this.store.dispatch(new SetCountryCode(event.target.value));
     }
 }

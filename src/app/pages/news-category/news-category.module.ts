@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from '@angular/router';
-import { newsCategoryRoute } from './newsCategory.routing';
-import { NewsCategoryComponent } from './newsCategory.component';
+import { newsCategoryRoute } from './news-category.routing';
+import { NewsCategoryComponent } from './news-category.component';
 import { CommonModule } from '@angular/common';
 
 @NgModule({

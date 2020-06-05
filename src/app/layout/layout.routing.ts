@@ -8,11 +8,11 @@ export const layoutRoute: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: () => import('../components/home/home.module').then(m => m.HomeModule)
+                loadChildren: () => import('../pages/home/home.module').then(m => m.HomeModule)
             },
             {
                 path: 'category/:id',
-                loadChildren: () => import('../components/newsCategory/newsCategory.module').then(m => m.NewsCategoryModule)
+                loadChildren: () => import('../pages/news-category/news-category.module').then(m => m.NewsCategoryModule)
             }
         ]
     }
